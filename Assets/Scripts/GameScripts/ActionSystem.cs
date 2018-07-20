@@ -44,7 +44,7 @@ namespace Enerlion
             cell.Element.transform.parent = cell.transform;
             cell.Element.transform.position = cell.transform.position;
             cell.Element.transform.localRotation = cell.transform.localRotation;
-            Destroy(cell.Element.GetComponent<Rigidbody>());
+            //Destroy(cell.Element.GetComponent<Rigidbody>());
         }
 
         public void Shoot()

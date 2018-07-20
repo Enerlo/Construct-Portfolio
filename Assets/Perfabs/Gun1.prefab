@@ -773,7 +773,7 @@ MonoBehaviour:
   Parent: {fileID: 0}
   CountBullet: 10
   TimeBetweenShoot: 0.2
-  ReloadTime: 10
+  ReloadTime: 2
   Barrel: {fileID: 4362189664331616}
   Bull: {fileID: 114551074524373318, guid: ed1ff2e7904d7a14d9a81c689af8a29b, type: 2}
 --- !u!136 &136023731827842930

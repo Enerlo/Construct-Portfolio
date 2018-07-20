@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33408429864451460}
   - component: {fileID: 23597639865162720}
   - component: {fileID: 136802471894135698}
+  - component: {fileID: 114928388194886478}
   m_Layer: 0
   m_Name: Medicine
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1003058886692258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.891653, y: 9.1, z: 8.080032}
+  m_LocalPosition: {x: 0.8773036, y: 9.02, z: 6.6714067}
   m_LocalScale: {x: 0.34259254, y: 0.10929439, z: 0.3425926}
   m_Children:
   - {fileID: 4692200867245674}
@@ -232,6 +233,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944676172371080}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114928388194886478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1003058886692258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4c9c93d87d4ef4b949951fba06d73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChangeHP: 20
 --- !u!136 &136457169723858718
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -267,7 +280,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.45630533
+  m_Height: 8.890073
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.043694843, y: 2.877743, z: -0.00000008699056}
