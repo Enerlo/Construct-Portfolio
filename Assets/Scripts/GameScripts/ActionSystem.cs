@@ -6,63 +6,57 @@ namespace Enerlion
 {
     public class ActionSystem : MonoBehaviour
     {
-        private CoreCell _coreCell;
         private Camera _camera;
         private Ray _ray;
         private RaycastHit _hit;
+        private PlayerCore _player;
 
 
         private void Start()
         {
-            _coreCell = FindObjectOfType<CoreCell>().GetComponent<CoreCell>();
             _camera = FindObjectOfType<Camera>();
+            _player = FindObjectOfType<PlayerCore>();
         }
-
+        
         public void Action()
         {
             Destroy(FindObjectOfType<InputEvent>().gameObject);
             _ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, 1))
+            {
                 if (_hit.collider.tag == "Element")
                 {
-                    foreach (var cell in _coreCell.Cells)
+                    var cells = _player.GetCellInfo();
+                    foreach (var a in cells)
                     {
-                        if (cell.Element == null && _hit.collider.gameObject.GetComponentInChildren<Element>().Parent == null && cell.IsSpecialCell != true)
+                        bool b1 = a.GetElement();
+                        bool b2 = _hit.collider.gameObject.GetComponentInChildren<Element>().GetElement();
+                        if (b1 && b2)
                         {
-                            AddElement(_hit.collider.gameObject, cell);
-                            Destroy(_hit.collider.gameObject);
+                            _player.HP = _hit.collider.gameObject.GetComponentInChildren<Element>().EnterCell(a, true);
                             return;
                         }
                     }
                 }
+            }
         }
 
-        void AddElement(GameObject element, CellComponent cell)
-        {
-            cell.Element = Instantiate(element);
-            cell.Element.GetComponentInChildren<Element>().Parent = cell.transform;
-            cell.Element.transform.parent = cell.transform;
-            cell.Element.transform.position = cell.transform.position;
-            cell.Element.transform.localRotation = cell.transform.localRotation;
-            //Destroy(cell.Element.GetComponent<Rigidbody>());
-        }
-
-        public void Shoot()
+        public void Shoot(bool isReload)
         {
             Destroy(FindObjectOfType<InputEvent>().gameObject);
-            foreach (var cell in _coreCell.Cells)
-                if (cell.Element != null)
-                    if (cell.Element.GetComponentInChildren<Weapon>() == true)
-                        cell.Element.GetComponentInChildren<Weapon>().Shoot();
-        }
+            var cells = _player.GetCellInfo();
 
-        public void Reload()
-        {
-            Destroy(FindObjectOfType<InputEvent>().gameObject);
-            foreach (var cell in _coreCell.Cells)
-                if (cell.Element != null)
-                    if (cell.Element.GetComponentInChildren<Weapon>() == true)
-                        cell.Element.GetComponentInChildren<Weapon>().Reload();
+            foreach(var a in cells)
+            {
+                if (a.Element != null && a.Element.GetComponentInChildren<Weapon>() == true)
+                {
+                    if (!isReload)
+                        a.Element.GetComponentInChildren<Weapon>().Shoot();
+                    else
+                        a.Element.GetComponentInChildren<Weapon>().Reload();
+                }
+                    
+            }
         }
     }
 }

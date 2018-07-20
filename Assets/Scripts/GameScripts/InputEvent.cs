@@ -18,12 +18,12 @@ namespace Enerlion
             }
             if (key == KeyCode.Mouse0)
             {
-                FindObjectOfType<ActionSystem>().GetComponent<ActionSystem>().Shoot();
+                FindObjectOfType<ActionSystem>().GetComponent<ActionSystem>().Shoot(false);
                 return;
             }
             if (key == KeyCode.R)
             {
-                FindObjectOfType<ActionSystem>().GetComponent<ActionSystem>().Reload();
+                FindObjectOfType<ActionSystem>().GetComponent<ActionSystem>().Shoot(true);
                 return;
             }
         }

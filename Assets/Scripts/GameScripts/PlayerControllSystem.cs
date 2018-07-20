@@ -25,7 +25,7 @@ namespace Enerlion
 
     private void Start()
     {
-        _core = FindObjectOfType<Core>().gameObject;
+        _core = FindObjectOfType<PlayerCore>().gameObject;
         _rigidbody = _core.GetComponent<Rigidbody>();
         _rigidbody.maxAngularVelocity = _maxAngularVelocity;
     }

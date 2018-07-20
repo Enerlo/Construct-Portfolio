@@ -8,8 +8,7 @@ namespace Enerlion
         public GameObject Event;
         private CameraControllSystem _ccs;
         private CameraWallControllSystem _cwcs;
-        private CoreCell _coreCell;
-        private Bot[] _bots;
+        private BotCore _bc;
 
         public KeyCode MoveForvard = KeyCode.W;
         public KeyCode MoveDown = KeyCode.S;
@@ -39,8 +38,7 @@ namespace Enerlion
         {
             _ccs = GetComponent<CameraControllSystem>();
             _cwcs = GetComponent<CameraWallControllSystem>();
-            _coreCell = FindObjectOfType<CoreCell>();
-            _bots = FindObjectsOfType<Bot>();
+            _bc = FindObjectOfType<BotCore>();
         }
 
         void LateUpdate()
@@ -56,11 +54,7 @@ namespace Enerlion
         void Update()
         {
             _ccs.HandleRotationMovement();
-            _coreCell.CellMoving();
-            foreach(var a in _bots)
-            {
-                a.BotPatrul();
-            }
+            _bc.BotPatrol();
 
             if (Input.anyKey)
             {

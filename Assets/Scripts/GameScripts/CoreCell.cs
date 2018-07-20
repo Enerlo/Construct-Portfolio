@@ -16,7 +16,7 @@ namespace Enerlion
             foreach (var a in cells)
             {
                 Cells.Add(a);
-                a.Parent = gameObject;
+                //a.Parent = gameObject;
             }
 
         }

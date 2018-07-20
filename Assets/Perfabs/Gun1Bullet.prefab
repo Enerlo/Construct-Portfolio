@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23156093561537846}
   - component: {fileID: 135111248470889922}
   - component: {fileID: 54821350561539408}
-  - component: {fileID: 114551074524373318}
+  - component: {fileID: 114376886577068470}
   m_Layer: 0
   m_Name: Gun1Bullet
   m_TagString: Untagged
@@ -297,7 +297,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114551074524373318
+--- !u!114 &114376886577068470
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -305,12 +305,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226088811254532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41621dc21cb72f34eb7ee2002efb7bed, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a705eb7a1db16646a043f22949dfe56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BullSpeed: 500
-  LifetimeBull: 5
-  Damage: 10
+  _bulletForse: 500
+  _bulletLifetime: 10
+  _bulletDamage: 20
 --- !u!135 &135111248470889922
 SphereCollider:
   m_ObjectHideFlags: 1

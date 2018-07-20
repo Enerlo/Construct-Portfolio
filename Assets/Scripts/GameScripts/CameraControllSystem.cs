@@ -32,7 +32,7 @@ namespace Enerlion
 
         private void Start()
         {
-            _player = FindObjectOfType<Core>().transform;
+            _player = FindObjectOfType<PlayerCore>().transform;
             if (_player == null) return;
         }
 
