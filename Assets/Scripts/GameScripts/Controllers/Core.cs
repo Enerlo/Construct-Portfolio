@@ -18,7 +18,7 @@ namespace Enerlion
 
         void Awake()
         {
-            _cells = GetComponentsInChildren<CellComponent>();
+            _cells = FindObjectsOfType<CellComponent>();
         }
 
         public void SetDamage(DamageInfo damage)

@@ -8,37 +8,19 @@ namespace Enerlion
         public GameObject Event;
         private CameraControllSystem _ccs;
         private CameraWallControllSystem _cwcs;
+        private PlayerControllSystem _pcs;
         private BotCore _bc;
-
-        public KeyCode MoveForvard = KeyCode.W;
-        public KeyCode MoveDown = KeyCode.S;
-        public KeyCode TurnLeft = KeyCode.A;
-        public KeyCode TurnRight = KeyCode.D;
-        public KeyCode Jump = KeyCode.Space;
-        public KeyCode Action = KeyCode.E;
-        public KeyCode ReloadKey = KeyCode.R;
-        public KeyCode Fire = KeyCode.Mouse0;
-        List<KeyCode> KeyList = new List<KeyCode>();
-
-        void Start()
-        {
-            KeyList.Add(MoveForvard);
-            KeyList.Add(MoveDown);
-            KeyList.Add(TurnLeft);
-            KeyList.Add(TurnRight);
-            KeyList.Add(Jump);
-            KeyList.Add(Action);
-            KeyList.Add(ReloadKey);
-            KeyList.Add(Fire);
-        }
-
-
+        private CoreNormailzed _cn;
+        private ActionSystem _as;
 
         void Awake()
         {
             _ccs = GetComponent<CameraControllSystem>();
             _cwcs = GetComponent<CameraWallControllSystem>();
             _bc = FindObjectOfType<BotCore>();
+            _pcs = FindObjectOfType<PlayerControllSystem>();
+            _cn = FindObjectOfType<CoreNormailzed>();
+            _as = GetComponent<ActionSystem>();
         }
 
         void LateUpdate()
@@ -55,20 +37,31 @@ namespace Enerlion
         {
             _ccs.HandleRotationMovement();
             _bc.BotPatrol();
+            _pcs.Move();
+            _cn.CellMoving();
 
-            if (Input.anyKey)
-            {
-                foreach (var key in KeyList)
-                {
-                    if (Input.GetKey(key))
-                    {
-                        //вызов эвента
-                        Instantiate(Event);
-                        Event.GetComponent<InputEvent>().EnterKey(key);
-                        return;
-                    }
-                }
-            }
+            if (Input.GetKey(KeyCode.E))
+                _as.Action();
+
+            if (Input.GetKey(KeyCode.Mouse0))
+                _as.Shoot(false);
+
+            if (Input.GetKey(KeyCode.R))
+                _as.Shoot(true);
+
+            //if (Input.anyKey)
+            //{
+            //    foreach (var key in KeyList)
+            //    {
+            //        if (Input.GetKey(key))
+            //        {
+            //            //вызов эвента
+            //            Instantiate(Event);
+            //            Event.GetComponent<InputEvent>().EnterKey(key);
+            //            return;
+            //        }
+            //    }
+            //}
         }
 
 

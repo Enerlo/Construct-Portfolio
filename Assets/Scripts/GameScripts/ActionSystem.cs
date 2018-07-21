@@ -20,7 +20,6 @@ namespace Enerlion
         
         public void Action()
         {
-            Destroy(FindObjectOfType<InputEvent>().gameObject);
             _ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, 1))
             {
@@ -33,7 +32,9 @@ namespace Enerlion
                         bool b2 = _hit.collider.gameObject.GetComponentInChildren<Element>().GetElement();
                         if (b1 && b2)
                         {
-                            _player.HP = _hit.collider.gameObject.GetComponentInChildren<Element>().EnterCell(a, true);
+                            //нужно лучшее решение
+                            AddElement(_hit.collider.gameObject, a);
+                            Destroy(_hit.collider.gameObject);
                             return;
                         }
                     }
@@ -41,9 +42,18 @@ namespace Enerlion
             }
         }
 
+        void AddElement(GameObject element, CellComponent cell)
+        {
+            cell.Element = Instantiate(element).transform;
+            cell.Element.parent = cell.transform;
+            cell.Element.position = cell.transform.position;
+            cell.Element.localRotation = cell.transform.localRotation;
+            Destroy(cell.Element.GetComponent<Rigidbody>());
+        }
+
+
         public void Shoot(bool isReload)
         {
-            Destroy(FindObjectOfType<InputEvent>().gameObject);
             var cells = _player.GetCellInfo();
 
             foreach(var a in cells)

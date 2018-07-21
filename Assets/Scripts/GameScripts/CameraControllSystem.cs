@@ -62,6 +62,7 @@ namespace Enerlion
                 _pivot.localRotation = _pivotTargetRot;
                 _pivot.parent.localRotation = _transtormTargetRot;
             }
+
         }
 
         public void FollowTarget(float deltaTime)
