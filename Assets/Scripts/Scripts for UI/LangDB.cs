@@ -97,6 +97,17 @@ namespace Enerlion
                     {
                         return english ? "Weapon 1" : "Оружие 1";
                     }
+
+                case "WinGame":
+                    {
+                        return english ? "You Win!" : "Вы выиграли!";
+                    }
+
+                case "LoseGame":
+                    {
+                        return english ? "You Lose" : "Вы проиграли";
+                    }
+
             }
             return null;
         }

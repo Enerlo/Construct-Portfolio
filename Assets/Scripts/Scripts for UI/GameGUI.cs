@@ -18,6 +18,9 @@ namespace Enerlion
         public GameObject VideoPanel;
         public GameObject AudioPanel;
         public GameObject ActivePanel;
+        public GameObject WinLosePanel;
+        public Text WinGame;
+        public Text LoseGame;
         [Header("Audio")]
         public AudioMixer AudioMixer;
         public Slider MasterVolume;
@@ -52,6 +55,7 @@ namespace Enerlion
             SettingsPanel.SetActive(false);
             AudioPanel.SetActive(false);
             VideoPanel.SetActive(false);
+            WinLosePanel.SetActive(false);
 
             _deactiveElement = FindObjectOfType<UpdateSystem>().gameObject;
 
@@ -161,6 +165,18 @@ namespace Enerlion
         void ActiveTrue()
         {
             _active = true;
+        }
+
+        public void Lose()
+        {
+            WinLosePanel.SetActive(true);
+            WinGame.gameObject.SetActive(false);
+        }
+
+        public void Win()
+        {
+            WinLosePanel.SetActive(true);
+            LoseGame.gameObject.SetActive(false);
         }
     }
 }

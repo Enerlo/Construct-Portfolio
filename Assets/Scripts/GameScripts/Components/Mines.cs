@@ -2,14 +2,14 @@
 
 namespace Enerlion
 {
-    class Mines : HPChanger
+    public class Mines : HPChanger
     {
         public GameObject Explouson;
 
-        private void OnDestroy()
+        void OnDestroy()
         {
-
             Instantiate(Explouson);
+
         }
     }
 }

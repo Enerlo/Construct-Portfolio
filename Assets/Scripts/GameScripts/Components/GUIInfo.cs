@@ -7,6 +7,7 @@ namespace Enerlion
     {
         private string _player;
         private CellComponent[] _components;
+        private GameGUI _gameGUI;
 
         public Text HPText;
         public Text Weapon1Text;
@@ -16,12 +17,23 @@ namespace Enerlion
         {
             _player = FindObjectOfType<PlayerCore>().GetComponent<PlayerCore>().HP.ToString();
             _components = GetComponentsInChildren<CellComponent>();
+            _gameGUI = FindObjectOfType<GameGUI>();
         }
 
         public void ChekInfo()
         {
             HPText.text = FindObjectOfType<PlayerCore>().GetComponent<PlayerCore>().HP.ToString();
-
+            if (FindObjectOfType<PlayerCore>().GetComponent<PlayerCore>().HP <= 0)
+            {
+                _gameGUI.Lose();
+                return;
+            }
+            if(FindObjectOfType<BotCore>().GetComponent<BotCore>().HP <= 0)
+            {
+                _gameGUI.Win();
+                return;
+            }
+                
             if (_components[0].Element == null)
                 Weapon1Text.text = "";
             else
@@ -35,6 +47,5 @@ namespace Enerlion
                 Weapon2Text.text = _components[1].GetComponentInChildren<Weapon>().CurrettBullet.ToString();
             }
         }
-
     }
 }
