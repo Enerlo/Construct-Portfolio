@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: ConstructGame
   m_EditorClassIdentifier: 
   debugViews:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       depth:
@@ -25,26 +25,26 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       excludeSkybox: 1
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
-        preset: 2
+        preset: 4
       taaSettings:
         jitterSpread: 0.75
         sharpen: 0.3
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       intensity: 1
-      radius: 0.3
-      sampleCount: 10
+      radius: 4.2
+      sampleCount: 16
       downsampling: 1
       forceForwardCompatibility: 0
       ambientOnly: 0
@@ -87,45 +87,45 @@ MonoBehaviour:
     m_Settings:
       lowPercent: 45
       highPercent: 95
-      minLuminance: -5
-      maxLuminance: 1
+      minLuminance: -0.25
+      maxLuminance: 2.06
       keyValue: 0.25
       dynamicKeyValue: 1
       adaptationType: 0
       speedUp: 2
       speedDown: 1
-      logMin: -8
-      logMax: 4
+      logMin: -7
+      logMax: 6
   bloom:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       bloom:
         intensity: 0.5
         threshold: 1.1
-        softKnee: 0.5
-        radius: 4
+        softKnee: 0.261
+        radius: 2.08
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.02
-        neutralWhiteIn: 10
-        neutralBlackOut: 0
-        neutralWhiteOut: 10
-        neutralWhiteLevel: 5.3
+        neutralBlackIn: 0.0172
+        neutralWhiteIn: 10.93
+        neutralBlackOut: 0.0168
+        neutralWhiteOut: 7.18
+        neutralWhiteLevel: 16.22
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 0
-        tint: 0
-        hueShift: 0
-        saturation: 1
-        contrast: 1
+        temperature: -37.8
+        tint: -65.5
+        hueShift: 1
+        saturation: 1.349
+        contrast: 1.014
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -134,9 +134,9 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0, g: 0, b: 0, a: 0}
-          power: {r: 0, g: 0, b: 0, a: 0}
-          offset: {r: 0, g: 0, b: 0, a: 0}
+          slope: {r: 0.8053364, g: 0.8096477, b: 1, a: 0}
+          power: {r: 0.69799554, g: 0.7588455, b: 1, a: 0}
+          offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -149,6 +149,15 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
+              inSlope: 1
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.5978062
+              value: 0.34090906
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -310,14 +319,14 @@ MonoBehaviour:
       spectralTexture: {fileID: 0}
       intensity: 0.1
   grain:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.5
+      intensity: 0.187
       size: 1
-      luminanceContribution: 0.8
+      luminanceContribution: 0.782
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
