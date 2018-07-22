@@ -29,6 +29,9 @@ namespace Enerlion
 
         private bool _isEnabled = false;
         private bool _active = true;
+        private GameObject _deactiveElement;
+
+
 
         private void Awake()
         {
@@ -49,6 +52,8 @@ namespace Enerlion
             SettingsPanel.SetActive(false);
             AudioPanel.SetActive(false);
             VideoPanel.SetActive(false);
+
+            _deactiveElement = FindObjectOfType<UpdateSystem>().gameObject;
 
         }
 
@@ -108,6 +113,7 @@ namespace Enerlion
 
         public void OnContinue()
         {
+            _deactiveElement.SetActive(true);
             ActivePanel.SetActive(true);
             PausePanel.SetActive(false);
             SettingsPanel.SetActive(false);
@@ -117,6 +123,7 @@ namespace Enerlion
 
         public void OnPause()
         {
+            _deactiveElement.SetActive(false);
             ActivePanel.SetActive(false);
             PausePanel.SetActive(true);
         }
@@ -136,7 +143,7 @@ namespace Enerlion
                     _active = false;
                     Invoke("ActiveTrue", 0.5f);
                     if (_isEnabled)
-                    {
+                    {                        
                         _isEnabled = !_isEnabled;
                         OnPause();
                         return;

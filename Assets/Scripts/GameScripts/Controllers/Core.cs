@@ -12,7 +12,7 @@ namespace Enerlion
         public float HP
         {
             get { return _hp; }
-            set { _hp = value; }
+            set { _hp = value;}
         }
 
 
@@ -21,9 +21,9 @@ namespace Enerlion
             _cells = FindObjectsOfType<CellComponent>();
         }
 
-        public void SetDamage(DamageInfo damage)
+        public virtual void SetDamage(DamageInfo damage)
         {
-            if( _hp <= 0)
+            if(_hp <= 0)
             {
                 _isDead = true;
                 DecompositeBody();

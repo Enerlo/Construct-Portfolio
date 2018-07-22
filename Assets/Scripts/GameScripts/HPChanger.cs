@@ -12,6 +12,7 @@ namespace Enerlion
         {
             var a = collision.collider.GetComponent<IDamage>();
             a.SetDamage(new DamageInfo(ChangeHP * (-1)));
+
             Destroy(gameObject);
         }
     }

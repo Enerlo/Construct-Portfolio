@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Enerlion
 {
     public class UpdateSystem : MonoBehaviour
     {
-        public GameObject Event;
         private CameraControllSystem _ccs;
         private CameraWallControllSystem _cwcs;
         private PlayerControllSystem _pcs;
         private BotCore _bc;
         private CoreNormailzed _cn;
         private ActionSystem _as;
+        private GivenPlatform[] _givenPlatform;
+        private GUIInfo _gi;
 
         void Awake()
         {
@@ -21,6 +21,8 @@ namespace Enerlion
             _pcs = FindObjectOfType<PlayerControllSystem>();
             _cn = FindObjectOfType<CoreNormailzed>();
             _as = GetComponent<ActionSystem>();
+            _givenPlatform = FindObjectsOfType<GivenPlatform>();
+            _gi = FindObjectOfType<GUIInfo>();
         }
 
         void LateUpdate()
@@ -39,6 +41,7 @@ namespace Enerlion
             _bc.BotPatrol();
             _pcs.Move();
             _cn.CellMoving();
+            _gi.ChekInfo();
 
             if (Input.GetKey(KeyCode.E))
                 _as.Action();
@@ -48,6 +51,11 @@ namespace Enerlion
 
             if (Input.GetKey(KeyCode.R))
                 _as.Shoot(true);
+
+            foreach(var a in _givenPlatform)
+            {
+                a.VarObject();
+            }
 
             //if (Input.anyKey)
             //{
